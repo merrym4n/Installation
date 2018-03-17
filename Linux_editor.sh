@@ -1,3 +1,6 @@
+#!/bin/sh
+echo "\033[32m"Linux_editor.sh"\033[0m"
+
 #install sublime
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 sudo apt-get install apt-transport-https

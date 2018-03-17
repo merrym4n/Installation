@@ -1,4 +1,5 @@
 #!/bin/sh
+echo "\033[32m"Linux_etc.sh"\033[0m"
 
 #install git
 sudo apt-get install git
