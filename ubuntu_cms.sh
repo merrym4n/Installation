@@ -1,6 +1,10 @@
 #!/bin/sh
 echo "\033[031m"install CMS"\033[0m"
 
+#install require
+echo "\033[032m"install require"\033[0m"
+sudo apt-get install vim git
+
 #because of nginx crash
 sudo service apache2 stop
 
