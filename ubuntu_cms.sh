@@ -28,6 +28,26 @@ sudo apt-get install nginx-full php7.0-cli php7.0-fpm phppgadmin \
 echo "\033[032m"install cms"\033[0m"
 cd ~/Documents/
 git clone --recursive "https://github.com/cms-dev/cms"
+
+#prepare cms
+echo "\033[032m"prepare cms"\033[0m"
 cd cms
+:<<'CHECK'
 echo "Y" | sudo ./prerequisites.py install
+CHECK
+sudo ./prerequisites.py install
 groups
+
+#install dependencies
+echo "\033[032m"install dependencies"\033[0m"
+sudo pip2 install -r requirements.txt
+sudo python2 setup.py install
+
+#configure DB
+echo "\033[032m"configure DB"\033[0m"
+sudo su - postgres
+createuser --username=postgres --pwprompt cmsuser
+createdb --username=postgres --owner=cmsuser cmsdb
+psql --username=postgres --dbname=cmsdb --command='ALTER SCHEMA public OWNER TO cmsuser'
+psql --username=postgres --dbname=cmsdb --command='GRANT SELECT ON pg_largeobject TO cmsuser'
+cmsInitDB
