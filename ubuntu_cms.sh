@@ -26,6 +26,8 @@ sudo apt-get install nginx-full php7.0-cli php7.0-fpm phppgadmin \
 
 #install cms
 echo "\033[032m"install cms"\033[0m"
-git clone --reculsive "https://github.com/cms-dev/cms" ~/Documents/
-
-
+cd ~/Documents/
+git clone --recursive "https://github.com/cms-dev/cms"
+cd cms
+echo "Y" | sudo ./prerequisites.py install
+groups
